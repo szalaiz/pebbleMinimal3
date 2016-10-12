@@ -21,7 +21,7 @@
     "shortName": "Minimal v3",
     "uuid": "0e42413f-c9e0-4a9a-a993-b1f3274d293d",
     "versionCode": 1,
-    "versionLabel": "1.0",
+    "versionLabel": "1.2",
     "watchapp": {
         "watchface": true
     }
