@@ -41,18 +41,10 @@ void battery_handler(BatteryChargeState state) {
 //	battery_level = 50;
 
 	switch(battery_level){
-		case 90 :
-			bitmap_layer_set_background_color(day_seven, GColorBlack);
-			break;
-		case 80 :
-			bitmap_layer_set_background_color(day_seven, GColorBlack);
-			break;
 		case 70 :
-			bitmap_layer_set_background_color(day_six,   GColorBlack);
 			bitmap_layer_set_background_color(day_seven, GColorBlack);
 			break;
 		case 60 :
-			bitmap_layer_set_background_color(day_five,  GColorBlack);
 			bitmap_layer_set_background_color(day_six,   GColorBlack);
 			bitmap_layer_set_background_color(day_seven, GColorBlack);
 			break;
@@ -91,7 +83,6 @@ void battery_handler(BatteryChargeState state) {
 			bitmap_layer_set_background_color(day_seven, GColorBlack);
 			break;
 		case 0 :
-			bitmap_layer_set_background_color(day_one,   GColorBlack);
 			bitmap_layer_set_background_color(day_two,   GColorBlack);
 			bitmap_layer_set_background_color(day_three, GColorBlack);
 			bitmap_layer_set_background_color(day_four,  GColorBlack);
