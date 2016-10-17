@@ -6,6 +6,7 @@
 
 Window *window;
 BitmapLayer *day_one, *day_two, *day_three, *day_four, *day_five, *day_six, *day_seven;
+BitmapLayer *dot1, *dot2, *dot3;
 TextLayer *hour_layer, *minute_layer, *date_layer;
 GFont custom_font_49;
 
@@ -35,12 +36,20 @@ void battery_handler(BatteryChargeState state) {
 	bitmap_layer_set_background_color(day_five,  GColorWhite);
 	bitmap_layer_set_background_color(day_six,   GColorWhite);
 	bitmap_layer_set_background_color(day_seven, GColorWhite);
+	bitmap_layer_set_background_color(dot1, GColorBlack);
+	bitmap_layer_set_background_color(dot2, GColorBlack);
+	bitmap_layer_set_background_color(dot3, GColorBlack);
 
 	static int battery_level;
 	battery_level = state.charge_percent;
 //	battery_level = 50;
 
 	switch(battery_level){
+		case 80 :
+			bitmap_layer_set_background_color(dot1, GColorWhite);
+			bitmap_layer_set_background_color(dot2, GColorWhite);
+			bitmap_layer_set_background_color(dot3, GColorWhite);
+			break;
 		case 70 :
 			bitmap_layer_set_background_color(day_seven, GColorBlack);
 			break;
@@ -113,6 +122,14 @@ void window_load(Window *window) {
 	layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(day_six));
 	layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(day_seven));
 
+	// Dot layers
+	dot1 = bitmap_layer_create(GRect(132, 1, 2, 2));
+	dot2 = bitmap_layer_create(GRect(136, 1, 2, 2));
+	dot3 = bitmap_layer_create(GRect(140, 1, 2, 2));
+	layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(dot1));
+	layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(dot2));
+	layer_add_child(window_get_root_layer(window), bitmap_layer_get_layer(dot3));
+
 	// Hour layer
 	hour_layer = text_layer_create(GRect(0, 25, 144, 50));
 	text_layer_set_background_color(hour_layer, GColorClear);
@@ -162,6 +179,9 @@ void window_unload(Window *window) {
 	bitmap_layer_destroy(day_five);
 	bitmap_layer_destroy(day_six);
 	bitmap_layer_destroy(day_seven);
+	bitmap_layer_destroy(dot1);
+	bitmap_layer_destroy(dot2);
+	bitmap_layer_destroy(dot3);
 	text_layer_destroy(hour_layer);
 	text_layer_destroy(minute_layer);
 	text_layer_destroy(date_layer);
